@@ -1,12 +1,18 @@
-li.feed-card {
+.feed-card {
     list-style: none;
     padding: 20px;
 }
 
-li.feed-card .feed-card-content{
+.feed-card .feed-card-content{
    padding-left: 15px;
 }
 
-li.feed-card:not(:first-child){
+.feed-card:not(:first-child){
     padding-top: 0;
+}
+
+.feed-card .card-background-image {
+    background-color: gray;
+    width: 80px;
+    height: 60px;
 }
