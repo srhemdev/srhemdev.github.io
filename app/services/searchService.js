@@ -15,7 +15,8 @@ var searchService = (function(){
                 callbacks[1]({total: response._total,
                               offset: query.offset,
                               limit: query.limit,
-                              search: query.search});
+                              search: query.search,
+                              totalPages: Math.round(response._total/query.limit) + 1});
             }
         };
         xhttp.open("GET", q, true);

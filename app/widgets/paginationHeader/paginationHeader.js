@@ -29,39 +29,45 @@ var paginationHeader = (function(w, d){
 
 
         leftButton.addEventListener('click', function(evt){
-            if(commonService.hasClass(leftButton, 'gray')) {
-                commonService.removeClass(leftButton, 'gray')
+            if(commonService.hasClass(rightButton, 'gray')) {
+                commonService.removeClass(rightButton, 'gray')
+            }
+            if(vm.pageNo == 1) {
+                return;
             }
             vm.pageNo--;
             vm.config.currentOffset -= vm.config.query.limit;
             vm.config.query.offset = vm.config.currentOffset;
-            if(vm.config.currentOffset < 0) {
-                commonService.addClass(leftButton, 'gray');
-                return;
-            }
+
             vm.moveLeft()
         });
 
         rightButton.addEventListener('click', function(evt){
-            if(commonService.hasClass(rightButton, 'gray')) {
-                commonService.removeClass(rightButton, 'gray')
+            if(commonService.hasClass(leftButton, 'gray')) {
+                commonService.removeClass(leftButton, 'gray')
+            }
+
+            if(vm.pageNo == vm.config.query.totalPages) {
+                return;
             }
             vm.pageNo++;
             vm.config.currentOffset += vm.config.query.limit;
             vm.config.query.offset = vm.config.currentOffset;
-            if(vm.config.currentOffset > vm.config.query.total) {
-                commonService.addClass(rightButton, 'gray');
-                return;
-            }
             vm.moveRight();
         });
 
         vm.setPageHeader = function(page) {
             currentPage.innerText = vm.pageNo;
-            totalPages.innerText = Math.round(page.total/page.limit) + 1;
+            totalPages.innerText = page.totalPages;
             totalResultsValue.innerText = page.total;
             vm.config.query = page;
             vm.config.currentOffset = page.offset;
+            if(vm.pageNo == vm.config.query.totalPages) {
+                commonService.addClass(rightButton, 'gray');
+            }
+            if(vm.pageNo == 1) {
+                commonService.addClass(leftButton, 'gray');
+            }
         }
 
         vm.config.callbacks.push(vm.config.callback, vm.setPageHeader);
