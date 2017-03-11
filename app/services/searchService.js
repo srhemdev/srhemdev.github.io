@@ -10,13 +10,16 @@ var searchService = (function(){
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var response = JSON.parse(this.responseText);
-                console.log(response);
+
                 callbacks[0](response.streams);
                 callbacks[1]({total: response._total,
                               offset: query.offset,
                               limit: query.limit,
                               search: query.search,
-                              totalPages: Math.round(response._total/query.limit) + 1});
+                              currentPage: response._total ? Math.ceil(query.offset/query.limit) + 1: 0,
+                              totalPages: Math.ceil(response._total/query.limit)
+
+                });
             }
         };
         xhttp.open("GET", q, true);

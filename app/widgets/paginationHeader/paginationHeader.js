@@ -2,22 +2,29 @@ var paginationHeader = (function(w, d){
     function paginationHeader(config) {
         var vm = this,
             el = d.getElementById(config.id),
-            leftButton, rightButton, totalPages, currentPage, totalResultsValue;
+            leftButton,
+            rightButton,
+            totalPages,
+            totalResultsValue,
+            currentPage,
+            currentOffset;
 
         vm.config = config;
         vm.config.callbacks = [];
-        vm.pageNo = 1;
+
+        currentOffset = 0;
+
 
         var paginationHeaderElement = '<div class="pagination-header flex-row space-between">\
                                             <div class="total-results">Total Results: \
                                                 <span class="total-results-value">0</span>\
                                             </div>\
                                             <div class="pagination flex-row">\
-                                                <div class="arrow-left"></div>\
+                                                <div class="arrow-left disabled"></div>\
                                                 <div class="values">\
                                                     <span class="current-page">0</span>/<span class="total-pages">0</span>\
                                                 </div>\
-                                                <div class="arrow-right"></span>\
+                                                <div class="arrow-right disabled"></span>\
                                             </div>\
                                         </div>';
 
@@ -30,55 +37,72 @@ var paginationHeader = (function(w, d){
         totalResultsValue = el.getElementsByClassName('total-results-value')[0];
 
 
-        leftButton.addEventListener('click', function(evt){
-            if(commonService.hasClass(rightButton, 'disable')) {
-                commonService.removeClass(rightButton, 'disable')
+        leftButton.addEventListener('click', moveLeft);
+
+        rightButton.addEventListener('click', moveRight);
+
+        vm.setPageHeader = setPageHeader;
+
+        function resetHeader() {
+            commonService.removeClass(rightButton, 'disabled');
+            commonService.removeClass(leftButton, 'disabled');
+
+        }
+
+        function moveLeft() {
+            if(commonService.hasClass(rightButton, 'disabled')) {
+                commonService.removeClass(rightButton, 'disabled')
             }
-            if(vm.pageNo == 1) {
+
+            if(currentOffset === 0) {
                 return;
             }
-            vm.pageNo--;
-            vm.config.currentOffset -= vm.config.query.limit;
-            vm.config.query.offset = vm.config.currentOffset;
 
-            vm.moveLeft()
-        });
+            currentOffset -= vm.config.query.limit;
+            vm.config.query.offset = currentOffset;
 
-        rightButton.addEventListener('click', function(evt){
-            if(commonService.hasClass(leftButton, 'disable')) {
-                commonService.removeClass(leftButton, 'disable')
+            vm.moveLeft();
+        }
+
+        function moveRight() {
+            if(commonService.hasClass(leftButton, 'disabled')) {
+                commonService.removeClass(leftButton, 'disabled')
             }
 
-            if(vm.pageNo == vm.config.query.totalPages) {
+            if(currentOffset + vm.config.query.limit >= vm.config.query.total) {
                 return;
             }
-            vm.pageNo++;
-            vm.config.currentOffset += vm.config.query.limit;
-            vm.config.query.offset = vm.config.currentOffset;
+
+            currentOffset += vm.config.query.limit;
+            vm.config.query.offset = currentOffset;
             vm.moveRight();
-        });
+        }
 
-        vm.setPageHeader = function(page) {
+        function setPageHeader(page) {
+            resetHeader();
 
-            currentPage.innerText = vm.pageNo;
+            currentPage.innerText = page.currentPage;
             totalPages.innerText = page.totalPages;
             totalResultsValue.innerText = page.total;
 
             vm.config.query = page;
-            vm.config.currentOffset = page.offset;
 
-            if(vm.pageNo == vm.config.query.totalPages) {
-                commonService.addClass(rightButton, 'disable');
+            currentOffset = page.offset;
+
+            if(currentOffset === 0) {
+                commonService.addClass(leftButton, 'disabled');
             }
 
-            if(vm.pageNo == 1) {
-                commonService.addClass(leftButton, 'disable');
+            if(currentOffset + page.limit >= page.total) {
+                commonService.addClass(rightButton, 'disabled');
             }
+
         }
 
         vm.config.callbacks.push(vm.config.callback, vm.setPageHeader);
 
     }
+
 
     paginationHeader.prototype.moveLeft = function() {
         searchService.getQueryResults(this.config.query, this.config.callbacks);

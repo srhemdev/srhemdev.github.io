@@ -65,6 +65,14 @@ html {
     border-right:10px solid #222;
 }
 
+.search-app .arrow-left.disabled {
+    border-right-color: #ccc;
+}
+
+.search-app .arrow-right.disabled {
+    border-left-color: #ccc;
+}
+
 
 
 
