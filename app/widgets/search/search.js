@@ -13,13 +13,15 @@ var search = (function(w, d){
 
         vm.config = config;
 
-        var searchElement = '<input class="search-box" type="text" minlength="1" maxlength="100"/>\
-                             <input class="search-button" type="button" value="Search"/>';
+        var searchElement = '<div class="search-widget flex-row">\
+                                <input class="search-box" type="text" minlength="1" maxlength="100"/>\
+                                <input class="search-button" type="button" value="Search"/>\
+                             </div>';
 
         el.innerHTML = searchElement;
 
-        searchBox = el.children[0];
-        searchButton = el.children[1];
+        searchBox = el.firstChild.children[0];
+        searchButton = el.firstChild.children[1];
 
         searchBox.addEventListener('keydown', function(evt){
             if(evt.which===13) {

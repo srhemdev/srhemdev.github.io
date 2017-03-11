@@ -20,7 +20,7 @@ var feed = (function(w, d){
                     var config = {
                         title: result.channel.display_name,
                         subtitle: result.game,
-                        img: result.preview.template.replace('{width}x{height}', '60x60'),
+                        img: result.preview.template.replace('{width}x{height}', '80x60'),
                         description: result.channel.status,
                         cardId: result._id,
                         viewers: result.viewers,

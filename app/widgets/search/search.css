@@ -1,0 +1,14 @@
+.search-widget {
+    padding: 20px;
+}
+
+.search-widget .search-box{
+  padding:8px;
+  font-size: 16px;
+  min-width: 85%;
+}
+
+
+.search-widget .search-button{
+
+}

@@ -8,43 +8,65 @@ html {
     padding: 20px 0 0 32px;
 }
 
-.gray {
-    color: gray;
+.search-app .disable {
+    color: #ccc;
 }
- .hidden {
+.search-app .hidden {
     display: none;
 }
 
-  .flex-row {
+.search-app  .flex-row {
     display: flex;
     flex-direction: row;
 }
 
-  .flex-column {
+.search-app  .flex-column {
     display:flex;
     flex-direction: column;
 }
 
-.space-between {
+.search-app .space-between {
     justify-content: space-between;
 }
 
 
-.home-automation-app input[type="button"] {
+.search-app input[type="button"] {
     background-color: #4abecc;
     color: #FFFFFF;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    padding: 10px;
     font-family: Verdana;
     cursor: pointer;
+    font-size: 16px;
 }
 
-.home-automation-app .error-message {
-    color: #FF0000;
-    font-size: 12px;
-    display: none;
+.search-app .empty-message {
+    text-align: center;
+    padding-top: 30%;
 }
+
+.search-app .arrow-right {
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+
+    border-left: 10px solid #222;
+}
+
+.search-app .arrow-left {
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+
+    border-right:10px solid #222;
+}
+
+
+
 
 
 
