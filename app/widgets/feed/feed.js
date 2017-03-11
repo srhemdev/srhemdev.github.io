@@ -1,58 +1,53 @@
 var feed = (function(w, d){
     function feed(config) {
         var vm = this,
-            el = d.getElementById(config.id);
-        console.log(el)
+            el = d.getElementById(config.id), feed, emptyMessage;
+
         vm.config = config;
-
-        var feedElement = '<ul class="feed"></ul>';
-        var emptyMessage = '<div class="empty-message">No results to show</div>';
-        console.log(feedElement)
-        el.innerHTML = feedElement;
-
         vm.populateFeed = populateFeed;
+
+        el.innerHTML = '<ul class="feed"></ul><div class="empty-message">No results to show</div>';
+
+        emptyMessage = el.getElementsByClassName('empty-message')[0];
+        feed = el.getElementsByClassName('feed')[0];
 
         function populateFeed(results) {
             clearFeed();
-            if(results.length) {
-                results.forEach(function(index, result){
-                    var config = {
-                        id: el.querySelector('feed'),
-                        title: result.title,
-                        subtitle: result.subtitle,
-                        img: result.image,
-                        description: result.description,
-                        cardId: index
-                    }
 
-                    var card = new feedCard(config);
-                    feedElement.appendChild(card.getFeedCard());
+            if(results.length) {
+                var fragment = '';
+                results.forEach(function(result){
+                    var config = {
+                        title: result.channel.display_name,
+                        subtitle: result.game,
+                        img: result.preview.template.replace('{width}x{height}', '60x60'),
+                        description: result.channel.status,
+                        cardId: result._id,
+                        viewers: result.viewers,
+                        url: result.channel.url
+                    }
+                    fragment += new feedCard(config).getFeedCard();
 
                 });
+                feed = el.getElementsByClassName('feed')[0];
+                feed.innerHTML = fragment;
             } else {
                 displayEmptyMessage();
             }
+
         }
 
         function clearFeed() {
-            var eMsg = el.getElementsByClassName('empty-message');
-            var feed = el.getElementsByClassName('feed')[0];
-
-            if(eMsg[0]) {
-                el.removeChild(emptyMessage);
+            if(!commonService.hasClass(emptyMessage, 'hidden')) {
+                commonService.addClass(emptyMessage, 'hidden');
             }
-
-            if(feed.childNodes.length) {
-                console.log(feed.childNodes.length)
-                feed.childNodes.forEach(function(node){
-                    feed.removeChild(node);
-                })
-
-            }
+            feed.innerHTML ='';
         }
 
         function displayEmptyMessage() {
-            el.appendChild(emptyMessage);
+            if(commonService.hasClass(emptyMessage, 'hidden')) {
+                commonService.removeClass(emptyMessage, 'hidden');
+            }
         }
     }
     return feed;

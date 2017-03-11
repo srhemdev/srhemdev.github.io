@@ -18,24 +18,23 @@ var search = (function(w, d){
 
         el.innerHTML = searchElement;
 
-        searchBox = el.childNodes[0];
-        searchButton = el.childNodes[1];
+        searchBox = el.children[0];
+        searchButton = el.children[1];
 
         searchBox.addEventListener('keydown', function(evt){
             if(evt.which===13) {
-                console.log('enter', this.value)
                 vm.getSearchResults(this.value);
             }
         });
 
         searchButton.addEventListener('click', function(evt){
-            console.log(searchBox.value);
             vm.getSearchResults(searchBox.value);
         })
     }
 
-    Search.prototype.getSearchResults = function(query) {
-        searchService.getQueryResults(query, this.config.callback);
+    Search.prototype.getSearchResults = function(s) {
+        this.config.query.search = s;
+        searchService.getQueryResults(this.config.query, this.config.callbacks);
     }
 
     return Search;
