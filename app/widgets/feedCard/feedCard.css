@@ -5,6 +5,7 @@
 
 .feed-card .feed-card-content{
    padding-left: 15px;
+   font-size: 16px;
 }
 
 .feed-card:not(:first-child){
@@ -13,6 +14,17 @@
 
 .feed-card .card-background-image {
     background-color: gray;
-    width: 80px;
-    height: 60px;
+    width: 120px;
+    height: 90px;
 }
+
+.feed-card .feed-card-content .title{
+    font-size: 28px;
+    font-weight: 600;
+}
+
+
+.feed-card .feed-card-content .subtitle{
+    margin-top: 10px;
+}
+

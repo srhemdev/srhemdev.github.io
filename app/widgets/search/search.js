@@ -14,7 +14,7 @@ var search = (function(w, d){
         vm.config = config;
 
         var searchElement = '<div class="search-widget flex-row">\
-                                <input class="search-box" type="text" minlength="1" maxlength="100"/>\
+                                <input class="search-box" type="text" placeholder="Search query..." minlength="1" maxlength="100"/>\
                                 <input class="search-button" type="button" value="Search"/>\
                              </div>';
 

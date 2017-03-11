@@ -50,9 +50,6 @@ var paginationHeader = (function(w, d){
         }
 
         function moveLeft() {
-            if(commonService.hasClass(rightButton, 'disabled')) {
-                commonService.removeClass(rightButton, 'disabled')
-            }
 
             if(currentOffset === 0) {
                 return;
@@ -61,13 +58,10 @@ var paginationHeader = (function(w, d){
             currentOffset -= vm.config.query.limit;
             vm.config.query.offset = currentOffset;
 
-            vm.moveLeft();
+            searchService.getQueryResults(vm.config.query, vm.config.callbacks);
         }
 
         function moveRight() {
-            if(commonService.hasClass(leftButton, 'disabled')) {
-                commonService.removeClass(leftButton, 'disabled')
-            }
 
             if(currentOffset + vm.config.query.limit >= vm.config.query.total) {
                 return;
@@ -75,7 +69,8 @@ var paginationHeader = (function(w, d){
 
             currentOffset += vm.config.query.limit;
             vm.config.query.offset = currentOffset;
-            vm.moveRight();
+
+            searchService.getQueryResults(vm.config.query, vm.config.callbacks);
         }
 
         function setPageHeader(page) {
@@ -101,15 +96,6 @@ var paginationHeader = (function(w, d){
 
         vm.config.callbacks.push(vm.config.callback, vm.setPageHeader);
 
-    }
-
-
-    paginationHeader.prototype.moveLeft = function() {
-        searchService.getQueryResults(this.config.query, this.config.callbacks);
-    }
-
-    paginationHeader.prototype.moveRight = function() {
-        searchService.getQueryResults(this.config.query, this.config.callbacks);
     }
 
     return paginationHeader;
