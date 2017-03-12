@@ -12,7 +12,5 @@ Submit your code to a github repo and send us the link.  You can host the runnin
 
 Pending
 
-
 styles
-jsonp
 refactor(optimize)

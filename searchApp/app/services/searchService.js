@@ -45,7 +45,8 @@ var searchService = (function(w, d){
     }
 
     function fetchResults(data) {
-        setTimeout(function(){processData(data);}, 500)
+        //Simulating a loader effect
+        setTimeout(function(){processData(data);}, 0)
     }
 
     function processData(data) {
