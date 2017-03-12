@@ -10,7 +10,7 @@ var searchService = (function(w, d){
                 '&q=' + q.search;
 
         loader = ldr;
-        callbacks = cbs,
+        callbacks = cbs;
         query = q;
 
         function getJSONPResponse() {
