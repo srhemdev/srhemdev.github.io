@@ -5,13 +5,8 @@
     font-family: Verdana;
 }
 
-
-.search-app .display {
-    padding: 20px 0 0 32px;
-}
-
 .search-app .disable {
-    color: #ccc;
+    color: #cccccc;
 }
 .search-app .hidden {
     display: none;
@@ -81,8 +76,5 @@
 .search-app .loader {
     opacity: 0.25;
 }
-
-
-
 
 
