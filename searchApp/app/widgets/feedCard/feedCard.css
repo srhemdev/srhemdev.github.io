@@ -1,0 +1,30 @@
+.feed-card {
+    list-style: none;
+    padding: 20px;
+}
+
+.feed-card .feed-card-content{
+   padding-left: 15px;
+   font-size: 16px;
+}
+
+.feed-card:not(:first-child){
+    padding-top: 0;
+}
+
+.feed-card .card-background-image {
+    background-color: #cccccc;
+    width: 120px;
+    height: 90px;
+}
+
+.feed-card .feed-card-content .title{
+    font-size: 28px;
+    font-weight: 600;
+}
+
+
+.feed-card .feed-card-content .subtitle{
+    margin-top: 10px;
+}
+
