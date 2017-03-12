@@ -60,6 +60,10 @@
     border-right:10px solid #222;
 }
 
+.search-app .arrow-left, .search-app .arrow-right {
+    cursor: pointer;
+}
+
 .search-app .arrow-left.disabled {
     border-right-color: #ccc;
 }
