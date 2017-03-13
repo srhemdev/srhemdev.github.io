@@ -23,6 +23,16 @@
     font-weight: 600;
 }
 
+.feed-card .feed-card-content .title a{
+    text-decoration: none;
+    color: #222222;
+}
+
+.feed-card .feed-card-content .title a:hover{
+    color: #4abecc;
+    text-decoration: underline;
+}
+
 
 .feed-card .feed-card-content .subtitle{
     margin-top: 10px;
