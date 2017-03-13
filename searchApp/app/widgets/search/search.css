@@ -6,15 +6,16 @@
 .search-widget .search-box{
   padding:8px;
   font-size: 16px;
-  min-width: 250px;
+  min-width: 350px;
 }
 
 .search-widget .search-box:focus{
     outline: none;
-    border: 1px solid #4abecc;
+    border-color: #4abecc;
+    border-style: solid;
 }
 
 
 .search-widget .search-button{
-
+    margin-left: -76px;
 }

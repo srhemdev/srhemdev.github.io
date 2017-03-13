@@ -35,11 +35,14 @@
     font-family: Verdana;
     cursor: pointer;
     font-size: 16px;
+    outline: none;
 }
 
 .search-app .empty-message {
     text-align: center;
     padding-top: 150px;
+    font-size: 1.5em;
+    color: #afafaf;
 }
 
 .search-app .arrow-right {

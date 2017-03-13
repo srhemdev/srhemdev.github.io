@@ -3,6 +3,7 @@ var searchService = (function(w, d){
         loader, callbacks, query;
 
     function getQueryResults(q, cbs, ldr) {
+        if(q && q.search === '') return;
         var searchQuery = url +
                 '&callback=searchService.fetchResults' +
                 '&limit=' + (q.limit || 10) +
