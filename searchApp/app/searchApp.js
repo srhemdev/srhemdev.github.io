@@ -11,7 +11,7 @@
     });
 
     var search1 = new search({
-                                id: 'search-area',
+                                 id: 'search-area',
                                  query: {
                                      limit: 20,
                                      offset: 0

@@ -6,7 +6,7 @@
 .search-widget .search-box{
   padding:8px;
   font-size: 16px;
-  min-width: 350px;
+  min-width: 250px;
 }
 
 .search-widget .search-box:focus{
@@ -17,5 +17,5 @@
 
 
 .search-widget .search-button{
-    margin-left: -76px;
+    margin-left: -1px;
 }
