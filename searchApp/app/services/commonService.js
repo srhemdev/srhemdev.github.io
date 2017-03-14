@@ -1,3 +1,15 @@
+/**
+ * @service
+ * commonService - can used across components
+ *
+ * @public methods:
+ * @method hasClass - checks if an element has a class name.
+ * @method addClass - adds a class name to an element.
+ * @method removeClass - removes a class name from an element.
+ * @method showLoader - displays loader class on an element.
+ * @method hideLoader - hides loader class from an element.
+ */
+
 var commonService = (function(){
     function hasClass(el, className) {
         if (el.classList)

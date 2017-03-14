@@ -1,5 +1,23 @@
+/**
+ * @class feed
+ * Feed List component
+ * Contains:
+ * - Feed layout
+ *
+ * @param object param contains:
+ *  config:
+ *  id - Get the id of the element to which you want to attach this feed
+ *       component to.
+ *
+ *  @public methods:
+ *  @method populateFeed - Populates the feed with new search results based on the query.
+ *
+ *
+ */
+
+
 var feed = (function(w, d){
-    function feed(config) {
+    function Feed(config) {
         var vm = this,
             el = d.getElementsByClassName(config.id)[0],
             feed, emptyMessage;
@@ -12,6 +30,9 @@ var feed = (function(w, d){
         emptyMessage = el.getElementsByClassName('empty-message')[0];
         feed = el.getElementsByClassName('feed')[0];
 
+
+        //each time this function is called, clear the feed and re-render the results.
+        //create instances of the cards.
         function populateFeed(results) {
             clearFeed();
 
@@ -38,6 +59,7 @@ var feed = (function(w, d){
 
         }
 
+        //Handler to clear the feed
         function clearFeed() {
             if(!commonService.hasClass(emptyMessage, 'hidden')) {
                 commonService.addClass(emptyMessage, 'hidden');
@@ -45,11 +67,12 @@ var feed = (function(w, d){
             feed.innerHTML ='';
         }
 
+        //Handler to display empty message
         function displayEmptyMessage() {
             if(commonService.hasClass(emptyMessage, 'hidden')) {
                 commonService.removeClass(emptyMessage, 'hidden');
             }
         }
     }
-    return feed;
+    return Feed;
 })(window, document);
