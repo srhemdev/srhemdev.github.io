@@ -22,20 +22,28 @@ var search = (function(w, d){
     function Search(config) {
         var vm = this,
             el = d.getElementsByClassName(config.id)[0],
-        searchBox, searchButton;
+        searchBox, searchButton, recentSearches, list, clear;
 
         vm.config = config;
+        vm.recentSearchValues = '';
 
         //Search Widget UI elements
         var searchElement = '<div class="search-widget flex-row">\
                                 <input class="search-box" type="text" placeholder="Search query..." minlength="1" maxlength="100"/>\
                                 <input class="search-button" type="button" value="Search"/>\
+                                <div class="recent-searches hidden">\
+                                    <ul class="recent-searches-list"></ul>\
+                                    <div class="clear">Clear recent searches</div>\
+                                </div>\
                              </div>';
 
         el.innerHTML = searchElement;
 
         searchBox = el.firstChild.children[0];
         searchButton = el.firstChild.children[1];
+        recentSearches = el.firstChild.children[2];
+        list = recentSearches.children[0];
+        clear = el.getElementsByClassName('clear')[0];
 
         // Event listener for keydown event on the search box.
         // Whenever we hit enter(normal user interaction on search),
@@ -43,21 +51,63 @@ var search = (function(w, d){
         searchBox.addEventListener('keydown', function(evt){
             if(evt.which===13) {
                 vm.getSearchResults(this.value);
+                commonService.addClass(recentSearches, 'hidden');
+            } else {
+                if(this.value !== '' && vm.recentSearchValues!=='') {
+                    commonService.removeClass(recentSearches, 'hidden');
+                    list.innerHTML = vm.recentSearchValues;
+
+                } else {
+                    commonService.addClass(recentSearches, 'hidden');
+                    list.innerHTML = '';
+                }
             }
+
         });
 
         // Event listener for click event on the search button.
         // Whenever we hit the search button, event is captured
         // and search results are updated.
         searchButton.addEventListener('click', function(evt){
+            commonService.addClass(recentSearches, 'hidden');
             vm.getSearchResults(searchBox.value);
         })
+
+        clear.addEventListener('click', function(evt){
+            searchService.clearRecentSearches();
+            commonService.addClass(recentSearches, 'hidden');
+            list.innerHTML = '';
+            vm.recentSearchValues = '';
+        });
+
+        list.addEventListener('click', function(evt){
+            if(evt.srcElement.nodeName === 'LI') {
+                vm.getSearchResults(evt.srcElement.innerText);
+                searchBox.value = '';
+                commonService.addClass(recentSearches, 'hidden');
+            }
+        });
+
+
+
     }
 
     //Calls the getQueryResults from searchService
     Search.prototype.getSearchResults = function(s) {
+        if(s === '') return;
         this.config.query.search = s;
+        searchService.updateRecentSearches(s);
+        this.recentSearchValues = this.buildRecentSearches();
         searchService.getQueryResults(this.config.query, this.config.callbacks, this.config.loader);
+    }
+
+    Search.prototype.buildRecentSearches = function() {
+        var vals = searchService.getRecentSearches();
+        var res = '';
+        vals.forEach(function(item){
+            res += '<li>' + item + '</li>'
+        });
+        return res;
     }
 
     return Search;

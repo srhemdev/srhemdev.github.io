@@ -9,12 +9,15 @@
  * @public methods:
  * @method getQueryResults - Makes JSONP call to fetch the query results.
  * @method fetchResults - JSONP callback to get the response from the API.
+ * @method updateRecentSearches - update recent searches.
+ * @method getRecentSearches - Featch the recent search results.
+ * @method clearRecentSearches - clear recent search results.
  */
 
 
 var searchService = (function(w, d){
     var url = 'https://api.twitch.tv/kraken/search/streams?client_id=p7u367c89hr4ouomumvogv9hh5636f',
-        loader, callbacks, query;
+        loader, callbacks, query, recentSearches=[];
 
     function getQueryResults(q, cbs, ldr) {
         if(q && q.search === '') return;
@@ -88,9 +91,30 @@ var searchService = (function(w, d){
         });
     }
 
+    //update recent searches on search query.
+    function updateRecentSearches(s) {
+        if(recentSearches.length == 5) {
+            recentSearches.splice(recentSearches.length -1, 1);
+        }
+        recentSearches.unshift(s);
+    }
+
+    //fetch recent searches
+    function getRecentSearches() {
+        return recentSearches;
+    }
+
+    //Clear recent searches
+    function clearRecentSearches() {
+        recentSearches.splice(0, recentSearches.length - 1);
+    }
+
     return {
         getQueryResults: getQueryResults,
-        fetchResults: fetchResults
+        fetchResults: fetchResults,
+        updateRecentSearches: updateRecentSearches,
+        getRecentSearches: getRecentSearches,
+        clearRecentSearches: clearRecentSearches
     }
 
 })(window, document);
