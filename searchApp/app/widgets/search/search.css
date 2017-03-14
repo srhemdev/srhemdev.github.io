@@ -53,6 +53,7 @@ li {
 ul.recent-searches-list
 li:hover {
     background-color: #cccccc;
+    color: #FFFFFF;
 }
 
 .search-widget .recent-searches .clear {
