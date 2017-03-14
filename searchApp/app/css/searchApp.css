@@ -1,13 +1,8 @@
-
-
 @import '../widgets/appLayout/appLayout.css';
 @import '../widgets/search/search.css';
-
 @import '../widgets/paginationHeader/paginationHeader.css';
-
 @import '../widgets/feedCard/feedCard.css';
 @import '../widgets/feed/feed.css';
-
 @import 'common.css';
 
                                                                                                                                            <script src="widgets/search/search.js"></script>
