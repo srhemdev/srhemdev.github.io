@@ -85,6 +85,7 @@ var search = (function(w, d){
             }
         });
 
+        //disable recent search popup
         d.body.addEventListener('click', function(e) {
             commonService.addClass(recentSearches, 'hidden');
         });
