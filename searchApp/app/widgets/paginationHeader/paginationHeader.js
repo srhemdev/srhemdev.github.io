@@ -9,7 +9,6 @@
  *  @param object param contains:
  *
  *  query(Object) - pass in the search query, limit, offset
- *
  *  callbacks(Array of functions) - callbacks to update feed and pagination header are
  *  added when the pagination header component is created.
  *

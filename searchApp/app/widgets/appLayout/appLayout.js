@@ -10,9 +10,10 @@
  *  @param object param contains:
  *  id - element id to which the layout needs to be appended.
  *
- *  @public methods:
+ *  @private methods:
  *  @method toggleLoader - hide/show loader on whole search results are when search results
  *                         are being updated.
+ *  @method init - instantiate feed, search, paginationHeader components required for app layout.
  *
  */
 
@@ -29,9 +30,6 @@ var appLayout = (function(w, d){
                             <div class="search-results"></div>\
                         </div>';
 
-
-        vm.toggleLoader = toggleLoader;
-
         searchResultsArea = d.getElementsByClassName('search-results-area')[0];
 
         // hide/show loader on whole search results are when search results are being
@@ -43,6 +41,28 @@ var appLayout = (function(w, d){
                 commonService.hideLoader(searchResultsArea);
             }
         }
+
+        //instantiate all the components required for app layout
+        function init() {
+            var feedComponent = new feed({id: 'search-results'}),
+                paginationHeaderComponent = new paginationHeader({
+                id: 'pagination-area',
+                callback: feedComponent.populateFeed,
+                loader: toggleLoader
+                }),
+                searchComponent = new search({
+                id: 'search-area',
+                query: {
+                    limit: 20,
+                    offset: 0
+                },
+                callbacks: [feedComponent.populateFeed, feedComponent.setPageHeader],
+                loader: toggleLoader
+            });
+
+        }
+
+        init();
 
     }
     return appLayout;

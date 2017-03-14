@@ -16,7 +16,6 @@
  *  @public methods:
  *  @method getFeedCard - Returns back the Feed card layout element
  *
- *
  */
 
 var feedCard = (function(w, d){

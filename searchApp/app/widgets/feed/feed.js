@@ -1,17 +1,16 @@
 /**
- * @class feed
- * Feed List component
- * Contains:
- * - Feed layout
+ *  @class feed
+ *  Feed List component
+ *  Contains:
+ *  - Feed layout
  *
- * @param object param contains:
+ *  @param object param contains:
  *  config:
  *  id - Get the id of the element to which you want to attach this feed
  *       component to.
  *
  *  @public methods:
  *  @method populateFeed - Populates the feed with new search results based on the query.
- *
  *
  */
 

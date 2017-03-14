@@ -1,6 +1,6 @@
 /**
  * @service
- * commonService - can used across components
+ * commonService - can be used across components.
  *
  * @public methods:
  * @method hasClass - checks if an element has a class name.
