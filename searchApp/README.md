@@ -38,6 +38,8 @@ Components:
            It contains a search box and search button.
            We can search for results by either hitting the enter button or clicking on
            the search button.
+           Additionally it shows recent search results, which I am simulating on the client
+           side for now, but preferred would be to maintain on BE.
            Consists of the css file and the constructor class called paginationHeader.
 
 

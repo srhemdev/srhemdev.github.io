@@ -53,13 +53,10 @@ var search = (function(w, d){
                 vm.getSearchResults(this.value);
                 commonService.addClass(recentSearches, 'hidden');
             } else {
-                if(this.value !== '' && vm.recentSearchValues!=='') {
-                    commonService.removeClass(recentSearches, 'hidden');
-                    list.innerHTML = vm.recentSearchValues;
-
+                if(this.value !== '' && vm.recentSearchValues !== '') {
+                    showRecentSearches();
                 } else {
-                    commonService.addClass(recentSearches, 'hidden');
-                    list.innerHTML = '';
+                    hideRecentSearches();
                 }
             }
 
@@ -75,8 +72,7 @@ var search = (function(w, d){
 
         clear.addEventListener('click', function(evt){
             searchService.clearRecentSearches();
-            commonService.addClass(recentSearches, 'hidden');
-            list.innerHTML = '';
+            hideRecentSearches();
             vm.recentSearchValues = '';
         });
 
@@ -87,6 +83,16 @@ var search = (function(w, d){
                 commonService.addClass(recentSearches, 'hidden');
             }
         });
+
+        function hideRecentSearches() {
+            commonService.addClass(recentSearches, 'hidden');
+            list.innerHTML = '';
+        }
+
+        function showRecentSearches() {
+            commonService.removeClass(recentSearches, 'hidden');
+            list.innerHTML = vm.recentSearchValues;
+        }
 
 
 
@@ -102,9 +108,9 @@ var search = (function(w, d){
     }
 
     Search.prototype.buildRecentSearches = function() {
-        var vals = searchService.getRecentSearches();
-        var res = '';
-        vals.forEach(function(item){
+        var searches = searchService.getRecentSearches(),
+            res = '';
+        searches.forEach(function(item){
             res += '<li>' + item + '</li>'
         });
         return res;

@@ -106,7 +106,7 @@ var searchService = (function(w, d){
 
     //Clear recent searches
     function clearRecentSearches() {
-        recentSearches.splice(0, recentSearches.length - 1);
+        recentSearches = [];
     }
 
     return {
