@@ -93,10 +93,14 @@ var searchService = (function(w, d){
 
     //update recent searches on search query.
     function updateRecentSearches(s) {
-        if(recentSearches.length == 5) {
-            recentSearches.splice(recentSearches.length -1, 1);
+        if(recentSearches.length &&
+           recentSearches.indexOf(s) === -1) {
+
+            if(recentSearches.length == 5) {
+                recentSearches.splice(recentSearches.length -1, 1);
+            }
+            recentSearches.unshift(s);
         }
-        recentSearches.unshift(s);
     }
 
     //fetch recent searches
