@@ -56,7 +56,7 @@ var appLayout = (function(w, d){
                     limit: 20,
                     offset: 0
                 },
-                callbacks: [feedComponent.populateFeed, feedComponent.setPageHeader],
+                callbacks: [feedComponent.populateFeed, paginationHeaderComponent.setPageHeader],
                 loader: toggleLoader
             });
 
