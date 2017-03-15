@@ -51,6 +51,10 @@ Components:
         -- searchApp.css
            Contains styles specific to the search app.
 
+    --- libraries
+        --Modernizer
+          Using 3rd party library to help with cross browser styles compatibility.
+
     --- services
         --searchService
           A service to get the query results from the search api.
@@ -92,6 +96,9 @@ on Javascript as suggested in the Problem Statement.
 - Can add unit tests and also karma configuration to run unit tests.
 - Add gulp configuraton.
 - Can use SASS framework to simplify stylesheets capitalizing on its abilities.
+- Can cache the queries, if we use Ajax we can request for a cache response header from server
+  so that we avoid making calls to fetch results for same query.
+  This call can be made again based on the Expires Header.
 
 
 

@@ -78,7 +78,7 @@ var search = (function(w, d){
 
         list.addEventListener('click', function(evt){
             evt.stopPropagation();
-            var target = evt.srcElement || evt.target;
+            var target = evt.target || evt.srcElement;
 
             if(target.nodeName === 'LI') {
                 vm.getSearchResults(target.innerText);
