@@ -78,8 +78,10 @@ var search = (function(w, d){
 
         list.addEventListener('click', function(evt){
             evt.stopPropagation();
-            if(evt.srcElement.nodeName === 'LI') {
-                vm.getSearchResults(evt.srcElement.innerText);
+            var target = evt.srcElement || evt.target;
+
+            if(target.nodeName === 'LI') {
+                vm.getSearchResults(target.innerText);
                 searchBox.value = '';
                 commonService.addClass(recentSearches, 'hidden');
             }
