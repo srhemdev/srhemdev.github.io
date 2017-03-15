@@ -8,6 +8,7 @@
   font-size: 16px;
   min-width: 250px;
   position: relative;
+  height: 20px; line-height: 20px;
 }
 
 .search-widget .search-box:focus{
@@ -19,15 +20,16 @@
 
 .search-widget .search-button{
     margin-left: -1px;
+    line-height: 20px;
 }
 
 .search-widget .recent-searches {
     color: #222222;
     position: absolute;
-    top: 59px;
+    top: 62px;
     left: 50%;
     transform: translateX(-50%);
-    min-width: 345px;
+    min-width: 350px;
     background-color: #FFFFFF;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
