@@ -32,7 +32,8 @@ var feedCard = (function(w, d){
                                     <a href="' + config.url + '" target="_blank">' + config.title + '</a></div>\
                                     <div class="subtitle">'+
                                         (config.subtitle || '-') + ' | ' +
-                                        (config.viewers>=0 ? config.viewers + ' viewers' : '-') +
+                                        (config.viewers>=0 ? config.viewers +
+                                        (config.viewers===1 ?' viewer': ' viewers'): '-') +
                                     '</div>\
                                     <div class="description">'+ config.description +'</div>\
                                 </div>\
