@@ -10,7 +10,7 @@
  * @method getQueryResults - Makes JSONP call to fetch the query results.
  * @method fetchResults - JSONP callback to get the response from the API.
  * @method updateRecentSearches - update recent searches.
- * @method getRecentSearches - Featch the recent search results.
+ * @method getRecentSearches - Fetch the recent search results.
  * @method clearRecentSearches - clear recent search results.
  */
 
