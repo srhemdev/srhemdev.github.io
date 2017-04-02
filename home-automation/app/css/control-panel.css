@@ -1,0 +1,58 @@
+.home-automation-app .controlPanel {
+    background-color: #D3D3D3;
+}
+.home-automation-app  .controlPanel .header {
+    padding: 30px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.home-automation-app
+.controlPanel
+.header
+.material-icons{
+    vertical-align: bottom;
+}
+
+.home-automation-app
+.controlPanel
+.control-options
+.control {
+    padding: 30px;
+    border-top: 1px solid #808080;
+}
+
+
+.home-automation-app
+.controlPanel
+.control-options
+.control
+.temperatureDigits {
+    font-weight: bold;
+    font-size: 36px;
+    padding-left: 32px;
+}
+
+.home-automation-app
+.controlPanel
+.control-options
+.control
+.temperatureDigits
+.temp-metric {
+    font-weight: normal;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.home-automation-app
+.controlPanel
+.empty-message {
+    padding: 30px;
+    text-align: center;
+    display: none;
+    border-top: 1px solid #A9A9A9;
+}
+
+
+

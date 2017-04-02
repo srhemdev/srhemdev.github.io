@@ -1,0 +1,137 @@
+html {
+    color: #222;
+    font-family: Verdana;
+}
+
+
+.home-automation-app .display {
+    padding: 20px 0 0 32px;
+}
+.home-automation-app .display.hidden {
+    display: none;
+}
+
+.home-automation-app .invisible {
+    visibility: hidden;
+}
+
+.home-automation-app .toggle {
+    width: 50px;
+    height: 25px;
+    border-radius: 50px;
+    background-color: #FF0000;
+    position: relative;
+    -webkit-transition: .4s;
+    transition: .4s;
+    cursor: pointer;
+}
+
+.home-automation-app  .toggle.active {
+    background-color: #008000;
+}
+
+.home-automation-app .toggle:after {
+    content: '';
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    background-color: #FFFFFF;
+    -webkit-transition: .4s;
+    transition: .4s;
+
+}
+
+.home-automation-app  .toggle.active:after{
+    left: auto;
+    right: 0;
+}
+
+.home-automation-app  .flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.home-automation-app  .flex-column {
+    display:flex;
+    flex-direction: column;
+}
+
+.home-automation-app .arrows {
+    padding-top: 10px;
+    padding-left: 40px;
+    cursor: pointer;
+}
+
+.home-automation-app .arrow-up.disabled,
+.home-automation-app .arrow-down.disabled {
+    color: #808080;
+}
+
+.home-automation-app .arrow-up.material-icons,
+.home-automation-app .arrow-down.material-icons {
+    padding-right: 0;
+    border: 1px solid #808080;
+    background-color: #ADD8E6;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.home-automation-app .material-icons {
+    padding-right: 10px;
+    font-size: 36px;
+    vertical-align: middle;
+}
+
+.home-automation-app .material-icons.delete {
+    font-size: 24px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.home-automation-app input[type="button"] {
+    background-color: #4abecc;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: Verdana;
+    cursor: pointer;
+}
+
+.home-automation-app .select {
+    border: none;
+    background-color: #4abecc;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-family: Verdana;
+}
+
+.home-automation-app .error-message {
+    color: #FF0000;
+    font-size: 12px;
+    display: none;
+}
+
+.home-automation-app .no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.home-automation-app a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.home-automation-app a.active{
+    color:  #4abecc;
+}
+

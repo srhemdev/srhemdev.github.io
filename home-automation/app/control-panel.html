@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Home Automation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="libraries/iconfont/material-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/control-panel.css">
+    </head>
+    <body class="home-automation-app">
+        <div class="controlPanel flex-column">
+            <div class="header"><i class="material-icons">home</i>Control Panel
+                <select class="select control-choice">
+                    <option value="none">Add a control</option>
+                    <option value="light">Lights</option>
+                    <option value="curtain">Curtains</option>
+                    <option value="temperature">Temperature</option>
+                </select>
+                <input id="control-choice-add" type="button" value="Add"/>
+                <div class="error-message">Please select a control</div>
+            </div>
+            <div class="control-options"></div>
+            <div class="empty-message">No controls added.<br/> Please add some controls.</div>
+        </div>
+
+        <script src="libraries/modernizr-2.8.3.min.js"></script>
+        <script src="libraries/jquery-3.1.1.min.js"></script>
+
+        <script src="data/mock-data.js"></script>
+        <script src="modules/curtainsControl/curtainsControl.js"></script>
+        <script src="modules/lightsControl/lightsControl.js"></script>
+        <script src="modules/temperatureControl/temperatureControl.js"></script>
+
+        <script src="modules/switchControl/switchControl.js"></script>
+        <script src="controlPanel.js"></script>
+
+    </body>
+</html>
